@@ -5,6 +5,7 @@ import os
 from random import randint
 from telegram.ext import Updater, CommandHandler
 
+
 TOKEN = os.environ['TELEGRAM_TOKEN']
 PORT = int(os.environ.get('PORT', '8443'))
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -49,11 +50,15 @@ def credits(bot, update):
         parse_mode='Markdown'
     )
 
+def download_sticker(bot, update):
+    update.message.reply_text(str(update.message))
+
 dispatcher.add_handler(CommandHandler('credits', credits))
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('urban_dictionary', urban_dictionary, pass_args=True))
 dispatcher.add_handler(CommandHandler('decide', decide))
 dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
+dispatcher.add_handler(CommandHandler('sticker_dl', download_sticker))
 
 print("Starting Monika Bot...")
 updater.start_webhook(listen="0.0.0.0",
