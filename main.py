@@ -51,5 +51,5 @@ dispatcher.add_handler(CommandHandler('decide', decide))
 dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
 
 print("Starting Monika Bot...")
-updater.start_polling()
+updater.start_webhook(port=33333)
 updater.idle()
