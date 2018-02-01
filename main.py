@@ -6,6 +6,7 @@ from random import randint
 from telegram.ext import Updater, CommandHandler
 
 TOKEN = os.environ['TELEGRAM_TOKEN']
+PORT = int(os.environ.get('PORT', '8443'))
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 updater = Updater(token=TOKEN)
@@ -52,9 +53,8 @@ dispatcher.add_handler(CommandHandler('decide', decide))
 dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
 
 print("Starting Monika Bot...")
-try:
-    PORT = int(os.environ['PORT'])
-except:
-    PORT = 33333
-updater.start_webhook(port=PORT)
+updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN)
+updater.bot.set_webhook("https://lilmonix3-bot.herokuapp.com/" + TOKEN)
 updater.idle()
