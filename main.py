@@ -42,11 +42,13 @@ def roll_dice(bot, update):
     r = randint(1, 6)
     update.message.reply_text("Rolled a %d." % (r))
 
-def hello(bot, update):
+def credits(bot, update):
     update.message.reply_text(
-        'Hello {}!'.format(update.message.from_user.first_name))
+        'Made by *Soham Sen* - @FadedChaos.\nWebsite - [sohamsen.me](http://sohamsen.me).',
+        parse_mode='Markdown'
+    )
 
-dispatcher.add_handler(CommandHandler('hello', hello))
+dispatcher.add_handler(CommandHandler('credits', credits))
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('urban_dictionary', urban_dictionary, pass_args=True))
 dispatcher.add_handler(CommandHandler('decide', decide))
