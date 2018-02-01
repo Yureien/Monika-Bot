@@ -53,7 +53,7 @@ dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
 
 print("Starting Monika Bot...")
 try:
-    PORT = os.environ['PORT']
+    PORT = int(os.environ['PORT'])
 except:
     PORT = 33333
 updater.start_webhook(port=PORT)
