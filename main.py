@@ -44,7 +44,8 @@ def roll_dice(bot, update):
 
 def credits(bot, update):
     update.message.reply_text(
-        'Made by *Soham Sen* - @FadedChaos.\nWebsite - [sohamsen.me](http://sohamsen.me).',
+        'Made by *Soham Sen* - @FadedChaos.\nWebsite - [sohamsen.me](http://sohamsen.me).\n\n' +
+        'Want to contribute to this? Or want more features? [Click here](https://github.com/FadedCoder/Monika-Bot).',
         parse_mode='Markdown'
     )
 
