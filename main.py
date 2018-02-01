@@ -50,5 +50,6 @@ dispatcher.add_handler(CommandHandler('urban_dictionary', urban_dictionary, pass
 dispatcher.add_handler(CommandHandler('decide', decide))
 dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
 
+print("Starting Monika Bot...")
 updater.start_polling()
 updater.idle()
