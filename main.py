@@ -1,10 +1,11 @@
 import logging
 import requests
 import json
+import os
 from random import randint
 from telegram.ext import Updater, CommandHandler
 
-TOKEN = "516336345:AAHp5JLLnrHgMD4eYCGXE6GWz0jBpHDFC_k"
+TOKEN = os.environ['TELEGRAM_TOKEN']
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 updater = Updater(token=TOKEN)
@@ -51,5 +52,9 @@ dispatcher.add_handler(CommandHandler('decide', decide))
 dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
 
 print("Starting Monika Bot...")
-updater.start_webhook(port=33333)
+try:
+    PORT = os.environ['PORT']
+except:
+    PORT = 33333
+updater.start_webhook(port=PORT)
 updater.idle()
