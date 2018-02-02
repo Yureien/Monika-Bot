@@ -16,6 +16,9 @@ dispatcher = updater.dispatcher
 def start(bot, update):
     update.message.reply_text("Hello all! I am Monika bot. If you do not know me, I suggest you play Doki Doki!")
 
+def shrug(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="¯\_(ツ)_/¯")
+
 def urban_dictionary(bot, update, args):
     term = ' '.join(args)
     ud_api = "http://api.urbandictionary.com/v0/define?term=" + term
@@ -59,6 +62,7 @@ dispatcher.add_handler(CommandHandler('urban_dictionary', urban_dictionary, pass
 dispatcher.add_handler(CommandHandler('decide', decide))
 dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
 dispatcher.add_handler(CommandHandler('sticker_dl', download_sticker))
+dispatcher.add_handler(CommandHandler('shrug', shrug))
 
 print("Starting Monika Bot...")
 updater.start_webhook(listen="0.0.0.0",
