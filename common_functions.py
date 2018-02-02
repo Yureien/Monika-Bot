@@ -9,9 +9,9 @@ def table(bot, update, args):
     if len(args) == 0:
         update.message.reply_text("USAGE: /table flip|unflip")
     else:
-        if args[0] == "flip":
+        if args[0].lower() == "flip":
             bot.send_message(chat_id=update.message.chat_id, text="(╯°□°）╯彡 ┻━┻")
-        elif args[0] == "unflip":
+        elif args[0].lower() == "unflip":
             bot.send_message(chat_id=update.message.chat_id, text="┬─┬ ノ(°-°ノ)")
         else:
             update.message.reply_text("USAGE: /table flip|unflip")
