@@ -61,7 +61,7 @@ def download_sticker(bot, update):
 def regex(bot, update):
     try:
         text = update.message.reply_to_message.text
-        a, b = re.findall("s/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?", update.message.text)[0]
+        a, b = re.findall("s/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?", update.message.text)[0]
         x = re.findall(a, text)
         for i in x:
             text = text.replace(i, b)
