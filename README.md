@@ -11,6 +11,8 @@ These features are currently implemented -
 * Table flip/unflip (/table flip|unflip)
 * Shrug (/shrug)
 * Credits (/credits)
+* Regex (This is not a command. It is like s/<regex text>/<replaced text>. To use this, reply to a message with this syntax. TODO: Add example here.)
+TODO: Add examples.
 
 ## Donate
 If this bot is widely used, it may slow down. I am currently using Heroku to host this app. You can [donate](http://sohamsen.me/#donate) me some money if you want this bot to be available without delays 24*7 :)
