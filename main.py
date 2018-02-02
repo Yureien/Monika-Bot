@@ -31,7 +31,7 @@ dispatcher.add_handler(CommandHandler('sticker_dl', download_sticker))
 dispatcher.add_handler(CommandHandler('shrug', shrug))
 dispatcher.add_handler(CommandHandler('table', table, pass_args=True))
 
-dispatcher.add_handler(RegexHandler('s/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?', regex))
+dispatcher.add_handler(RegexHandler('s/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?', regex))
 
 print("Starting Monika Bot...")
 # For Heroku, webhook is used. However, for development,
