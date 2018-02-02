@@ -1,12 +1,9 @@
 import logging
-import requests
-import json
 import os
-from random import randint
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler, RegexHandler
 
 from common_functions import credits, start, urban_dictionary, decide, \
-    roll_dice, download_sticker, shrug, table
+    roll_dice, download_sticker, shrug, table, regex
 
 # For security reasons, the original token for the bot is stored in Heroku.
 # The token mentioned here is just a test token. If you want to contribute,
@@ -33,6 +30,8 @@ dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
 dispatcher.add_handler(CommandHandler('sticker_dl', download_sticker))
 dispatcher.add_handler(CommandHandler('shrug', shrug))
 dispatcher.add_handler(CommandHandler('table', table, pass_args=True))
+
+dispatcher.add_handler(RegexHandler('s/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?', regex))
 
 print("Starting Monika Bot...")
 # For Heroku, webhook is used. However, for development,

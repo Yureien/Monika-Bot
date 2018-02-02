@@ -1,3 +1,8 @@
+import re
+import requests
+import json
+from random import randint
+
 def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=
                      "Hello all! I am Monika bot. If you do not know me, I suggest you play Doki Doki!")
@@ -52,3 +57,15 @@ def credits(bot, update):
 
 def download_sticker(bot, update):
     update.message.reply_text(str(update.message))
+
+def regex(bot, update):
+    try:
+        text = update.message.reply_to_message.text
+        a, b = re.findall("s/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?", update.message.text)[0]
+        x = re.findall(a, text)
+        for i in x:
+            text = text.replace(i, b)
+        bot.send_message(chat_id=update.message.chat_id, text=text,
+                         reply_to_message_id=update.message.reply_to_message.message_id)
+    except:
+        pass # Ignored for now.
