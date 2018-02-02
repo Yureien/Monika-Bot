@@ -8,6 +8,9 @@ These features are currently implemented -
 * Urban Dictionary (/urban_dictionary <TERM>)
 * Decide (/decide)
 * Dice roll (/roll_dice)
+* Table flip/unflip (/table flip|unflip)
+* Shrug (/shrug)
+* Credits (/credits)
 
 ## Donate
 If this bot is widely used, it may slow down. I am currently using Heroku to host this app. You can [donate](http://sohamsen.me/#donate) me some money if you want this bot to be available without delays 24*7 :)
