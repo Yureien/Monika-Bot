@@ -2,8 +2,7 @@ import logging
 import os
 from telegram.ext import Updater, CommandHandler, RegexHandler
 
-from common_functions import credits, start, urban_dictionary, decide, \
-    roll_dice, download_sticker, shrug, table, regex
+from modules.common_functions import Common
 
 # For security reasons, the original token for the bot is stored in Heroku.
 # The token mentioned here is just a test token. If you want to contribute,
@@ -22,16 +21,17 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 
-dispatcher.add_handler(CommandHandler('credits', credits))
-dispatcher.add_handler(CommandHandler('start', start))
-dispatcher.add_handler(CommandHandler('urban_dictionary', urban_dictionary, pass_args=True))
-dispatcher.add_handler(CommandHandler('decide', decide))
-dispatcher.add_handler(CommandHandler('roll_dice', roll_dice))
-dispatcher.add_handler(CommandHandler('sticker_dl', download_sticker))
-dispatcher.add_handler(CommandHandler('shrug', shrug))
-dispatcher.add_handler(CommandHandler('table', table, pass_args=True))
+funcs = Common()
+dispatcher.add_handler(CommandHandler('credits', funcs.credits))
+dispatcher.add_handler(CommandHandler('start', funcs.start))
+dispatcher.add_handler(CommandHandler('urban_dictionary', funcs.urban_dictionary, pass_args=True))
+dispatcher.add_handler(CommandHandler('decide', funcs.decide))
+dispatcher.add_handler(CommandHandler('roll_dice', funcs.roll_dice))
+dispatcher.add_handler(CommandHandler('sticker_dl', funcs.download_sticker))
+dispatcher.add_handler(CommandHandler('shrug', funcs.shrug))
+dispatcher.add_handler(CommandHandler('table', funcs.table, pass_args=True))
 
-dispatcher.add_handler(RegexHandler('s/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?', regex))
+dispatcher.add_handler(RegexHandler(funcs.regex_text, funcs.regex))
 
 print("Starting Monika Bot...")
 # For Heroku, webhook is used. However, for development,

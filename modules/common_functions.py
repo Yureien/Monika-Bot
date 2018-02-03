@@ -1,0 +1,77 @@
+import re
+import requests
+import json
+from random import randint
+
+class Common:
+    regex_text = 's/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?'
+
+    def start(self, bot, update):
+        bot.send_message(chat_id=update.message.chat_id, text=
+                         "Hello! I am Monika bot. If you do not know me, I suggest you play Doki Doki!\n\n" +
+                         "I am a multipurpose bot, and I can do a variety of things." +
+                         "To know more, [click here](https://github.com/FadedCoder/Monika-Bot).",
+                         parse_mode="Markdown")
+
+    def shrug(self, bot, update):
+        bot.send_message(chat_id=update.message.chat_id, text="¯\_(ツ)_/¯")
+        
+    def table(self, bot, update, args):
+        if len(args) == 0:
+            update.message.reply_text("USAGE: /table flip|unflip")
+        else:
+            if args[0].lower() == "flip":
+                bot.send_message(chat_id=update.message.chat_id, text="(╯°□°）╯彡 ┻━┻")
+            elif args[0].lower() == "unflip":
+                bot.send_message(chat_id=update.message.chat_id, text="┬─┬ ノ(°-°ノ)")
+            else:
+                update.message.reply_text("USAGE: /table flip|unflip")
+
+    def urban_dictionary(self, bot, update, args):
+        term = ' '.join(args)
+        ud_api = "http://api.urbandictionary.com/v0/define?term=" + term
+        ud_reply = json.loads(requests.get(ud_api).content)['list']
+        if len(args) == 0:
+            update.message.reply_text("USAGE: /urban_dictionary <Word>")
+        elif len(ud_reply) != 0:
+            ud = ud_reply[0]
+            reply_text = "<b>{0}</b>\n<a href='{1}'>{1}</a>\n<i>By {2}</i>\n\nDefinition: {3}\n\nExample: {4}".format(
+                ud['word'], ud['permalink'], ud['author'], ud['definition'], ud['example'])
+            update.message.reply_text(reply_text, parse_mode='HTML')
+        else:
+            update.message.reply_text("Term not found")
+
+    def decide(self, bot, update):
+        r = randint(1, 100)
+        if r <= 45:
+            update.message.reply_text("Yes.")
+        elif r <= 90:
+            update.message.reply_text("No.")
+        else:
+            update.message.reply_text("Maybe.")
+
+    def roll_dice(self, bot, update):
+        r = randint(1, 6)
+        update.message.reply_text("Rolled a %d." % (r))
+
+    def credits(self, bot, update):
+        update.message.reply_text(
+            'Made by *Soham Sen* - @FadedChaos.\nWebsite - [sohamsen.me](http://sohamsen.me).\n\n' +
+            'Want to contribute to this? Or want more features? [Click here](https://github.com/FadedCoder/Monika-Bot).',
+            parse_mode='Markdown'
+        )
+
+    def download_sticker(self, bot, update):
+        update.message.reply_text(str(update.message))
+
+    def regex(self, bot, update):
+        try:
+            text = update.message.reply_to_message.text
+            a, b = re.findall(self.regex_text, update.message.text)[0]
+            x = re.findall(a, text)
+            for i in x:
+                text = text.replace(i, b)
+            bot.send_message(chat_id=update.message.chat_id, text=text,
+                             reply_to_message_id=update.message.reply_to_message.message_id)
+        except:
+            pass # Ignored for now.
