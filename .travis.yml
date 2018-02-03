@@ -1,0 +1,22 @@
+language: python
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
+services:
+  - postgresql
+
+install:
+  - pip install -r requirements.txt
+  - pip install pytest
+  - pip install flaky
+
+env:
+  - IS_TRAVIS=True
+
+before_script:
+  - psql -c 'create database testdb;' -U postgres
+
+script:
+  - pytest main.py
