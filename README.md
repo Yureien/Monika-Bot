@@ -1,5 +1,5 @@
 # Monika-Bot
-![Heroku](https://heroku-badge.herokuapp.com/?app=lilmonix3-bot)
+[![Build Status](https://travis-ci.org/FadedCoder/Monika-Bot.svg?branch=master)](https://travis-ci.org/FadedCoder/Monika-Bot) ![Heroku](https://heroku-badge.herokuapp.com/?app=lilmonix3-bot)
 
 Telegram bot - [@lilmonix3Bot](https://t.me/lilmonix3Bot). A multipurpose bot.
 
