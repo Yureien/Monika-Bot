@@ -11,7 +11,8 @@ These features are currently implemented -
 * Table flip/unflip (/table flip|unflip)
 * Shrug (/shrug)
 * Credits (/credits)
-* Regex (This is not a command. It is like s/<regex text>/<replaced text>. To use this, reply to a message with this syntax. TODO: Add example here.)
+* Quotes (/quotes)
+* Regex (This is not a command. It is like s/regex text/replaced text. To use this, reply to a message with this syntax. TODO: Add example here.)
 TODO: Add examples.
 
 ## Donate
