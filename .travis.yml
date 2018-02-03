@@ -19,4 +19,4 @@ before_script:
   - psql -c 'create database testdb;' -U postgres
 
 script:
-  - pytest main.py
+  - python3 main.py
