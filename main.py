@@ -1,5 +1,6 @@
 import logging
 import os
+from threading import Timer
 from telegram.ext import Updater, CommandHandler, RegexHandler
 
 from modules.common_functions import Common
@@ -21,7 +22,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 
-funcs = Common()
+funcs = Common(isDevMode)
 dispatcher.add_handler(CommandHandler('credits', funcs.credits))
 dispatcher.add_handler(CommandHandler('start', funcs.start))
 dispatcher.add_handler(CommandHandler('urban_dictionary', funcs.urban_dictionary, pass_args=True))
@@ -44,5 +45,9 @@ if not isDevMode:
     updater.bot.set_webhook("https://lilmonix3-bot.herokuapp.com/" + TOKEN)
     updater.idle()
 else:
-    updater.start_polling()
-
+    if 'IS_TRAVIS' in os.environ:  # Terminate after 10s if Travis
+        updater.start_polling()
+        Timer(10.0, updater.stop).start()
+    else:
+        updater.start_polling()
+        updater.idle()

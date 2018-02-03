@@ -8,9 +8,9 @@ from . import quotes as qut
 
 class Common:
 
-    def __init__(self):
+    def __init__(self, isDevMode=False):
         self.regex_text = "s/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/([a-zA-Z0-9_\-+ \*\(\)!@#$%.\^&{}\[\]:;\"\'<>,\?]+)/?"  # noqa
-        self.quotes = qut.Quotes()
+        self.quotes = qut.Quotes(isDevMode)
 
     def start(self, bot, update):
         bot.send_message(chat_id=update.message.chat_id,

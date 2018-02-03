@@ -5,15 +5,15 @@ from random import randint
 
 
 class Quotes:
-    def __init__(self):
-        try:
+    def __init__(self, isDevMode=False):
+        if not isDevMode:
             parse.uses_netloc.append("postgres")
             url = parse.urlparse(os.environ["DATABASE_URL"])
             self.conn = psycopg2.connect(database=url.path[1:], user=url.username,
                                          password=url.password, host=url.hostname, port=url.port)
-        except KeyError:
+        else:
             self.conn = psycopg2.connect(database="testdb", user="postgres",
-                                         password="postgrespass", host="127.0.0.1", port="5432")
+                                         host="127.0.0.1", port="5432")
         self.cursor = self.conn.cursor()
         print("New table created: ", self.__createTable())
 
