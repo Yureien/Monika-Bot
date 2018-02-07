@@ -18,7 +18,6 @@ Telegram bot - [@lilmonix3Bot](https://t.me/lilmonix3Bot). A multipurpose bot.
 - [Want more features?](#want-more-features?)
 
 ## Current features
-These features are currently implemented -
 
 ### Urban Dictionary
 #### Purpose:
@@ -26,11 +25,15 @@ Give the meaning of a word from [Urban Dictionary](www.urbandictionary.com/).
 #### Usage:
 `/urban_dictionary [WORD]`
 
+---
+
 ### Decide
 #### Purpose:
 Helping people in dilemma with 45% chances of the bot replying `Yes` (to do something, buy a new phone, relase your North Korean missile, etc.), 45% chances of replying `No`(no to downloading Vim, sing in shower, die because of not doing homework, etc.), and 10% chances of replying `Maybe`(putting people in dilemma again).
 #### Usage:
 `/decide`
+
+---
 
 ### Roll dice
 #### Purpose:
@@ -38,13 +41,17 @@ Helping people play Board Games (who can't buy a physical kit or don't have the 
 #### Usage:
 `/roll_dice`
 
+---
+
 ### Table
 #### Purpose:
-Helping people have know that you freaked out because they're not capitalizing appropriate letters or that the finally capitalized it.
+Helping people know that you have freaked out because they're not capitalizing appropriate letters or that they finally capitalized it.
 #### Usage:
 `/table flip`: (╯°□°）╯彡 ┻━┻
 
 `/table unflip`: ┬─┬ ノ(°-°ノ)
+
+---
 
 ### Shrug
 #### Purpose:
@@ -53,11 +60,16 @@ Helping people express that they're a human and not a bot reply "**Idk**" all th
 `/shrug`: ¯\_(ツ)_/¯
 
 
+---
+
 ### Credits
 #### Purpose:
 Popularize some non-famous coders.
+_(Send the names of all the contributors of this repo)_
 #### Usage:
 `/credits`
+
+---
 
 ### Quote
 #### Purpose:
@@ -69,17 +81,25 @@ Markdown some of the messages that you'll be needing later.
 
 `/quote all`: List all the quotes ever.
 
+---
+
 ### Regex
 #### Purpose:
 Helping you reply to questions with minimal efforts.
 #### Usage:
 **Syntax**: 
+
 Reply to a message with `s/[A STRING IN THE MESSAGE]/[THE STRING YOU WANNA REPLACE THE PREVIOUS ONE TO]`
 
 **Example**:
+
 _Person A_ : `Doing well?`
+
 _You_: Replied to the answer with `s/?/.`
-**Monika**: Replying to your message: `Doing well.`
+
+***Monika***: Replying to your message: `Doing well.`
+
+---
 
 ## Donate
 If this bot is widely used, it may slow down. I am currently using Heroku to host this app. You can [donate](http://sohamsen.me/#donate) me some money if you want this bot to be available without delays 24*7 :)
