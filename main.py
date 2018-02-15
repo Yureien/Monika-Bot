@@ -44,8 +44,7 @@ if not isDevMode:
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=TOKEN)
-    updater.bot.set_webhook("https://lilmonix3t.sohamsen.me/" + TOKEN,
-                            certificate=open('/srv/ssl/cloudflare/sohamsen.me.cf.pem', 'rb'))
+    updater.bot.set_webhook("https://lilmonix3t.sohamsen.me/" + TOKEN)
     updater.idle()
 else:
     if 'IS_TRAVIS' in os.environ:  # Terminate after 10s if Travis
