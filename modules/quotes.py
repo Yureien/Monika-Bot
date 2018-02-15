@@ -11,7 +11,7 @@ class Quotes:
             username = parse.urlparse(os.environ["LM3_USER"])
             password = parse.urlparse(os.environ["LM3_PASS"])
             self.conn = psycopg2.connect(database='lilmonix3db', user=username,
-                                         password=password, host='127.0.0.1', port=5432)
+                                         password=password, host='127.0.0.1', port="5432")
         else:
             self.conn = psycopg2.connect(database="testdb", user="postgres",
                                          host="127.0.0.1", port="5432")

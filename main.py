@@ -16,6 +16,8 @@ except:
     isDevMode = True
 PORT = int(os.environ.get('PORT', '6969'))  # Port is dynamically served by VPS.
 
+print("Is running in development mode: ", isDevMode)
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
