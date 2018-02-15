@@ -8,8 +8,8 @@ class Quotes:
     def __init__(self, isDevMode=False):
         if not isDevMode:
             parse.uses_netloc.append("postgres")
-            username = parse.urlparse(os.environ["DATABASE_URL"])
-            password = parse.urlparse(os.environ["DATABASE_URL"])
+            username = parse.urlparse(os.environ["LM3_USER"])
+            password = parse.urlparse(os.environ["LM3_PASS"])
             self.conn = psycopg2.connect(database='lilmonix3-db', user=username,
                                          password=password, host='127.0.0.1', port=5432)
         else:
