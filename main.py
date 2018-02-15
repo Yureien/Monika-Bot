@@ -5,7 +5,7 @@ from telegram.ext import Updater, CommandHandler, RegexHandler
 
 from modules.common_functions import Common
 
-# For security reasons, the original token for the bot is stored in Heroku.
+# For security reasons, the original token for the bot is stored in my VPS.
 # The token mentioned here is just a test token. If you want to contribute,
 # please create a test bot with @BotFather and add its token in the except.
 isDevMode = False
@@ -14,7 +14,7 @@ try:
 except:
     TOKEN = "537036751:AAGYK7ZzutTTMuPUb777vdPvW2kmw0f3S0U"
     isDevMode = True
-PORT = int(os.environ.get('PORT', '8443'))  # Port is dynamically served by Heroku.
+PORT = int(os.environ.get('PORT', '6969'))  # Port is dynamically served by VPS.
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -36,13 +36,13 @@ dispatcher.add_handler(CommandHandler('quote', funcs.quote, pass_args=True))
 dispatcher.add_handler(RegexHandler(funcs.regex_text, funcs.regex))
 
 print("Starting Monika Bot...")
-# For Heroku, webhook is used. However, for development,
+# For my VPS, webhook is used. However, for development,
 # the polling method is used as webhook requires SSL.
 if not isDevMode:
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=TOKEN)
-    updater.bot.set_webhook("https://lilmonix3-bot.herokuapp.com/" + TOKEN)
+    updater.bot.set_webhook("https://telegram.monika.sohamsen.me/" + TOKEN)
     updater.idle()
 else:
     if 'IS_TRAVIS' in os.environ:  # Terminate after 10s if Travis
