@@ -1,15 +1,13 @@
 import psycopg2
 import os
-from urllib import parse
 from random import randint
 
 
 class Quotes:
     def __init__(self, isDevMode=False):
         if not isDevMode:
-            parse.uses_netloc.append("postgres")
-            username = parse.urlparse(os.environ["LM3_USER"])
-            password = parse.urlparse(os.environ["LM3_PASS"])
+            username = os.environ["LM3_USER"]
+            password = os.environ["LM3_PASS"]
             self.conn = psycopg2.connect(database='lilmonix3db', user=username,
                                          password=password, host='127.0.0.1', port="5432")
         else:
