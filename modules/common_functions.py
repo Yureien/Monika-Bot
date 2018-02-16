@@ -96,7 +96,7 @@ class Common:
                                      text=reply_str)
             except ValueError:
                 if args[0].lower() == "all":
-                    _qstr = "Quote {0}:\n{1}]\n\n"
+                    _qstr = "Quote {0}:\n{1}\n\n"
                     reply_str = "All quotes in this chat:\n\n"
                     for i in range(1, tqs + 1):
                         reply_str += _qstr.format(i, self.quotes.get_quote(
