@@ -70,6 +70,13 @@ class Common:
     def download_sticker(self, bot, update):
         update.message.reply_text(str(update))
 
+    def eight_ball(self, bot, update):
+        possible = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good",
+                    "I see good things happening", "Never", "Negative", "Could be",
+                    "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
+        answer = possible[randint(0, len(possible) - 1)]
+        update.message.reply_text(answer)
+
     def regex(self, bot, update):
         try:
             text = update.message.reply_to_message.text
