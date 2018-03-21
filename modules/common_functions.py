@@ -38,7 +38,7 @@ class Common:
         if len(args) == 0:
             update.message.reply_text("USAGE: /lmgtfy <SEARCH_QUERY>")
         else:
-            query = str2url(args[0].replace(" ", "+"))
+            query = str2url("+".join(args))
             LMGTFY_URL = "http://lmgtfy.com/?q=" + query
             update.message.reply_text('<a href="{0}">{0}</a>'.format(LMGTFY_URL),
                                       parse_mode='html')
