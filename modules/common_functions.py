@@ -2,6 +2,7 @@ import re
 import requests
 import json
 from random import randint
+from urllib.parse import quote as str2url
 
 from . import quotes as qut
 
@@ -32,6 +33,15 @@ class Common:
                 bot.send_message(chat_id=update.message.chat_id, text="┬─┬ ノ(°-°ノ)")
             else:
                 update.message.reply_text("USAGE: /table flip|unflip")
+
+    def lmgtfy(self, bot, update, args):
+        if len(args) == 0:
+            update.message.reply_text("USAGE: /lmgtfy <SEARCH_QUERY>")
+        else:
+            query = str2url(args[0].replace(" ", "+"))
+            LMGTFY_URL = "http://lmgtfy.com/?q=" + query
+            update.message.reply_text('<a href="{0}">{0}</a>'.format(LMGTFY_URL),
+                                      parse_mode='html')
 
     def urban_dictionary(self, bot, update, args):
         term = ' '.join(args)

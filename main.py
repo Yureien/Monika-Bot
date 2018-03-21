@@ -35,6 +35,7 @@ dispatcher.add_handler(CommandHandler('sticker_dl', funcs.download_sticker))
 dispatcher.add_handler(CommandHandler('shrug', funcs.shrug))
 dispatcher.add_handler(CommandHandler('table', funcs.table, pass_args=True))
 dispatcher.add_handler(CommandHandler('quote', funcs.quote, pass_args=True))
+dispatcher.add_handler(CommandHandler('lmgtfy', funcs.lmgtfy, pass_args=True))
 
 dispatcher.add_handler(RegexHandler(funcs.regex_text, funcs.regex))
 
