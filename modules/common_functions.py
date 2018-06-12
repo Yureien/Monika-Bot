@@ -1,8 +1,12 @@
 import re
 import requests
 import json
+from uuid import uuid4
 from random import randint
 from urllib.parse import quote as str2url
+from telegram.utils.helpers import escape_markdown
+from telegram import InlineQueryResultArticle, ParseMode, \
+    InputTextMessageContent
 
 from . import quotes as qut
 
@@ -20,19 +24,15 @@ class Common:
                          "To know more, [click here](https://github.com/FadedCoder/Monika-Bot).",
                          parse_mode="Markdown")
 
-    def shrug(self, bot, update):
-        bot.send_message(chat_id=update.message.chat_id, text="¯\_(ツ)_/¯")
-
-    def table(self, bot, update, args):
-        if len(args) == 0:
-            update.message.reply_text("USAGE: /table flip|unflip")
-        else:
-            if args[0].lower() == "flip":
-                bot.send_message(chat_id=update.message.chat_id, text="(╯°□°）╯彡 ┻━┻")
-            elif args[0].lower() == "unflip":
-                bot.send_message(chat_id=update.message.chat_id, text="┬─┬ ノ(°-°ノ)")
-            else:
-                update.message.reply_text("USAGE: /table flip|unflip")
+    def inline_kaomoji(self, bot, update):
+        kaomojis = ["¯\_(ツ)_/¯", "( ͡° ͜ʖ ͡°)", "(ᴗ ͜ʖ ᴗ)", "(╯°□°）╯︵ ┻━┻)",  "┬──┬◡ﾉ(° -°ﾉ)",
+                    "(☭ ͜ʖ ☭)", "( ‾ ʖ̫ ‾)", "( ͡° ʖ̯ ͡°)",  "ಠ_ಠ",  "(⌐▨_▨)",  "(ﾟωﾟ;)"]
+        results = []
+        for i in kaomojis:
+            results.append(InlineQueryResultArticle(
+                id=uuid4(), title=i,
+                input_message_content=InputTextMessageContent(i)))
+        update.inline_query.answer(results)
 
     def lmgtfy(self, bot, update, args):
         if len(args) == 0:
@@ -51,7 +51,7 @@ class Common:
             update.message.reply_text("USAGE: /urban_dictionary <Word>")
         elif len(ud_reply) != 0:
             ud = ud_reply[0]
-            reply_text = "<b>{0}</b>\n<a href='{1}'>{1}</a>\n<i>By {2}</i>\n\nDefinition: {3}\n\nExample: {4}".format(
+            reply_text = "<b>{0}</b>\n<a href='{1}'>{1}</a>\n<i>By {2}</i>\n\nDefinition: {3}\n\nExample: {4}".format(  # noqa
                 ud['word'], ud['permalink'], ud['author'], ud['definition'], ud['example'])
             update.message.reply_text(reply_text, parse_mode='HTML')
         else:

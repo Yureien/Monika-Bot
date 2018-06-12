@@ -1,7 +1,7 @@
 import logging
 import os
 from threading import Timer
-from telegram.ext import Updater, CommandHandler, RegexHandler
+from telegram.ext import Updater, CommandHandler, RegexHandler, InlineQueryHandler
 
 from modules.common_functions import Common
 
@@ -32,12 +32,12 @@ dispatcher.add_handler(CommandHandler('decide', funcs.decide))
 dispatcher.add_handler(CommandHandler('8ball', funcs.eight_ball))
 dispatcher.add_handler(CommandHandler('roll_dice', funcs.roll_dice))
 dispatcher.add_handler(CommandHandler('sticker_dl', funcs.download_sticker))
-dispatcher.add_handler(CommandHandler('shrug', funcs.shrug))
-dispatcher.add_handler(CommandHandler('table', funcs.table, pass_args=True))
 dispatcher.add_handler(CommandHandler('quote', funcs.quote, pass_args=True))
 dispatcher.add_handler(CommandHandler('lmgtfy', funcs.lmgtfy, pass_args=True))
 
 dispatcher.add_handler(RegexHandler(funcs.regex_text, funcs.regex))
+
+dispatcher.add_handler(InlineQueryHandler(funcs.inline_kaomoji))
 
 print("Starting Monika Bot...")
 # For my VPS, webhook is used. However, for development,
