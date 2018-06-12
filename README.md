@@ -6,11 +6,10 @@ Telegram bot - [@lilmonix3Bot](https://t.me/lilmonix3Bot). A multipurpose bot.
 **Table of Content**
 
 - [Current features](#current-features)
+  	- [Emoticons](#emoticons)
 	- [Urban Dictionary](#urban-dictionary)
 	- [Decide](#decide)
 	- [Roll dice](#roll-dice)
-	- [Table](#table)
-	- [Shrug](#shrug)
 	- [Credits](#credits)
 	- [Quote](#quote)
 	- [Regex](#regex)
@@ -18,6 +17,14 @@ Telegram bot - [@lilmonix3Bot](https://t.me/lilmonix3Bot). A multipurpose bot.
 - [Want more features?](#want-more-features?)
 
 ## Current features
+
+### Emoticons
+#### Purpose:
+Adds loads of emoticons.
+#### Usage:
+<This is an inline command. Simply do @lilmonix3Bot in group chat.>
+
+---
 
 ### Urban Dictionary
 #### Purpose:
